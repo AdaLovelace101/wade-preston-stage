@@ -25,11 +25,11 @@ export default function AboutSection() {
             
           </div>
           <div className="hidden md:block absolute -bottom-6 -right-6 w-40 h-40 overflow-hidden rounded-sm border border-border/60 opacity-90">
-            <Image
-              src={siteConfig.images.piano}
-              alt="Wade Preston at the piano"
-              fittingType="fill"
-              className="w-full h-full hidden" />
+            
+
+
+
+            
             
           </div>
         </motion.div>
