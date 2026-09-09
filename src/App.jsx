@@ -8,15 +8,11 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 // Add page imports here
 import ProtectedRoute from '@/components/ProtectedRoute';
-import PublicLayout from '@/components/site/PublicLayout';
-import Home from '@/pages/Home';
-import About from '@/pages/About';
-import CalendarPage from '@/pages/CalendarPage';
-import Contact from '@/pages/Contact';
+import { PublicLayout } from '@/components/Public';
+import { Home, About, CalendarPage, Contact } from '@/pages/Public';
+import { AdminLogin, AdminDashboard } from '@/pages/Admin';
 import ForgotPassword from '@/pages/ForgotPassword';
 import ResetPassword from '@/pages/ResetPassword';
-import AdminLogin from '@/pages/admin/AdminLogin';
-import AdminDashboard from '@/pages/admin/AdminDashboard';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
