@@ -1,0 +1,69 @@
+{
+  "name": "Event",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Event Name"
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date",
+      "title": "Date"
+    },
+    "start_time": {
+      "type": "string",
+      "title": "Start Time"
+    },
+    "end_time": {
+      "type": "string",
+      "title": "End Time"
+    },
+    "venue": {
+      "type": "string",
+      "title": "Venue"
+    },
+    "city": {
+      "type": "string",
+      "title": "City"
+    },
+    "state": {
+      "type": "string",
+      "title": "State"
+    },
+    "address": {
+      "type": "string",
+      "title": "Location / Address"
+    },
+    "description": {
+      "type": "string",
+      "title": "Description"
+    },
+    "external_url": {
+      "type": "string",
+      "title": "External URL"
+    }
+  },
+  "required": [
+    "title",
+    "event_date"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
