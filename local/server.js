@@ -7,8 +7,14 @@ const app = express();
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'wadepreston';
+
+// ---- Accounts ----
+// Two logins: one for Wade (manages his gigs) and one for you (backup/admin).
+// Change the username/password values below to whatever you want.
+const ACCOUNTS = [
+  { username: 'wade', password: 'piano', name: 'Wade', role: 'performer' },
+  { username: 'admin', password: 'wadepreston', name: 'Administrator', role: 'admin' },
+];
 
 // ---- SQLite database (auto-created on first run) ----
 const db = new Database(path.join(__dirname, 'events.sqlite'));
@@ -59,10 +65,11 @@ function auth(req, res, next) {
 // ---- Auth ----
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body || {};
-  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+  const account = ACCOUNTS.find(a => a.username === username && a.password === password);
+  if (account) {
     const token = crypto.randomUUID();
     tokens.add(token);
-    return res.json({ token });
+    return res.json({ token, name: account.name, role: account.role });
   }
   return res.status(401).json({ error: 'Invalid credentials' });
 });
@@ -109,6 +116,7 @@ app.listen(PORT, () => {
   console.log('\n  ─────────────────────────────────────────');
   console.log('  Wade Preston site is running:');
   console.log(`  →  http://localhost:${PORT}`);
-  console.log(`  Admin login:  ${ADMIN_USERNAME} / ${ADMIN_PASSWORD}`);
+  console.log('  Logins:');
+  ACCOUNTS.forEach(a => console.log(`    ${a.username} / ${a.password}   (${a.name})`));
   console.log('  ─────────────────────────────────────────\n');
 });

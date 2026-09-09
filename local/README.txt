@@ -31,13 +31,12 @@ ADMIN DASHBOARD
 
 Go to http://localhost:3000#/admin  (or click "Admin" in the footer).
 
-Default login:
-    Username:  admin
-    Password:  wadepreston
+There are two accounts (edit them in server.js under "ACCOUNTS"):
 
-You can change these by setting environment variables before starting:
-    On Mac/Linux:   ADMIN_USERNAME=myname ADMIN_PASSWORD=mypass npm start
-    On Windows:     set ADMIN_USERNAME=myname && set ADMIN_PASSWORD=mypass && npm start
+    Wade's login:        wade / piano          (for managing his gigs)
+    Your backup login:   admin / wadepreston   (in case something breaks)
+
+Change the username/password values in server.js to whatever you want.
 
 In the dashboard you can add, edit, and delete events. Changes are saved
 to the local events.sqlite file and appear on the public site immediately.
