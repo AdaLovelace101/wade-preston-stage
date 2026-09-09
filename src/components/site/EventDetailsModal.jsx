@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { X, Calendar, Clock, MapPin, Link2, ExternalLink } from "lucide-react";
+import { X, Calendar, Clock, MapPin } from "lucide-react";
 import { formatDate, formatTime, formatTimeRange, formatLocation } from "@/lib/eventUtils";
 
 export default function EventDetailsModal({ event, onClose }) {
@@ -107,18 +107,6 @@ export default function EventDetailsModal({ event, onClose }) {
               </div>
             )}
 
-            {event.external_url && (
-              <a
-                href={event.external_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 text-[11px] uppercase tracking-playbill rounded-sm hover:brass-glow transition-all"
-              >
-                <Link2 className="w-4 h-4" />
-                View Event / Tickets
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            )}
           </div>
         </div>
       </motion.div>

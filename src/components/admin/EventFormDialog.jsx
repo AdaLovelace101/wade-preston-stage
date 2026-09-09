@@ -186,16 +186,6 @@ export default function EventFormDialog({ event, onClose, onSaved }) {
               />
             </Field>
 
-            <Field label="External Link (tickets / event page)">
-              <input
-                type="url"
-                value={form.external_url}
-                onChange={set("external_url")}
-                placeholder="https://"
-                className="form-input"
-              />
-            </Field>
-
             <p className="text-xs text-muted-foreground">
               Only Event Name and Date are required. All other fields are optional.
             </p>
