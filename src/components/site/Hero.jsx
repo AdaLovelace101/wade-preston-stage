@@ -10,11 +10,11 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src={siteConfig.images.hero}
-          alt="Wade Preston performing on stage"
+          src={siteConfig.images.piano}
+          alt="Wade Preston at the piano"
           fittingType="fill"
-          focalPointX={0.35}
-          focalPointY={0.4}
+          focalPointX={0.5}
+          focalPointY={0.5}
           className="w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/75 to-background/20" />
