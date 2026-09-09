@@ -3,19 +3,19 @@ import { Link, useLocation, Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Menu, X, ArrowRight, Calendar, CalendarDays, Clock, MapPin,
-  ChevronLeft, ChevronRight, Loader2, Instagram, Facebook, Youtube, Music2, Mail,
-} from "lucide-react";
+  ChevronLeft, ChevronRight, Loader2, Instagram, Facebook, Youtube, Music2, Mail } from
+"lucide-react";
 import { base44 } from "@/api/base44Client";
 import { siteConfig, formatDate, formatShortDate, formatMonthYear, formatTimeRange, formatLocation, isUpcoming } from "@/lib/site";
 import { Image } from "@/components/ui/image";
 
 /* ---------------- Navbar ---------------- */
 const navLinks = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Calendar", to: "/calendar" },
-  { label: "Contact", to: "/contact" },
-];
+{ label: "Home", to: "/" },
+{ label: "About", to: "/about" },
+{ label: "Calendar", to: "/calendar" },
+{ label: "Contact", to: "/contact" }];
+
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -38,33 +38,33 @@ function Navbar() {
           <img src={siteConfig.images.logo} alt="Wade Preston" className="h-11 w-auto md:h-12 object-contain" />
         </Link>
         <ul className="hidden md:flex items-center gap-10">
-          {navLinks.map((l) => (
-            <li key={l.to}>
+          {navLinks.map((l) =>
+          <li key={l.to}>
               <Link to={l.to} className={`text-[11px] uppercase tracking-[0.2em] font-medium transition-colors duration-300 ${location.pathname === l.to ? "text-primary" : "text-foreground/75 hover:text-primary"}`}>
                 {l.label}
               </Link>
             </li>
-          ))}
+          )}
         </ul>
         <button className="md:hidden p-2 -mr-2 text-foreground" onClick={() => setOpen((v) => !v)} aria-label="Toggle navigation menu" aria-expanded={open}>
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
-      {open && (
-        <div className="md:hidden bg-background/97 backdrop-blur-md border-t border-border/60">
+      {open &&
+      <div className="md:hidden bg-background/97 backdrop-blur-md border-t border-border/60">
           <ul className="px-6 py-4">
-            {navLinks.map((l) => (
-              <li key={l.to}>
+            {navLinks.map((l) =>
+          <li key={l.to}>
                 <Link to={l.to} className={`block py-4 text-sm uppercase tracking-[0.2em] border-b border-border/40 ${location.pathname === l.to ? "text-primary" : "text-foreground/80"}`}>
                   {l.label}
                 </Link>
               </li>
-            ))}
+          )}
           </ul>
         </div>
-      )}
-    </header>
-  );
+      }
+    </header>);
+
 }
 
 /* ---------------- Footer ---------------- */
@@ -72,11 +72,11 @@ function Footer() {
   const year = new Date().getFullYear();
   const s = siteConfig.social;
   const socials = [
-    { url: s.instagram, icon: Instagram, label: "Instagram" },
-    { url: s.facebook, icon: Facebook, label: "Facebook" },
-    { url: s.youtube, icon: Youtube, label: "YouTube" },
-    { url: s.tiktok, icon: Music2, label: "TikTok" },
-  ].filter((item) => item.url);
+  { url: s.instagram, icon: Instagram, label: "Instagram" },
+  { url: s.facebook, icon: Facebook, label: "Facebook" },
+  { url: s.youtube, icon: Youtube, label: "YouTube" },
+  { url: s.tiktok, icon: Music2, label: "TikTok" }].
+  filter((item) => item.url);
 
   return (
     <footer className="bg-background border-t border-border/60 mt-24">
@@ -89,11 +89,11 @@ function Footer() {
           <div>
             <h3 className="text-[11px] uppercase tracking-[0.2em] text-primary mb-5">Explore</h3>
             <ul className="space-y-3">
-              {navLinks.map((l) => (
-                <li key={l.to}>
+              {navLinks.map((l) =>
+              <li key={l.to}>
                   <Link to={l.to} className="text-sm text-foreground/75 hover:text-primary transition-colors">{l.label}</Link>
                 </li>
-              ))}
+              )}
             </ul>
           </div>
           <div>
@@ -102,15 +102,15 @@ function Footer() {
               <Mail className="w-4 h-4" />
               {siteConfig.contactEmail}
             </a>
-            {socials.length > 0 && (
-              <div className="flex items-center gap-4">
-                {socials.map((item) => (
-                  <a key={item.label} href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.label} className="text-foreground/60 hover:text-primary transition-colors">
+            {socials.length > 0 &&
+            <div className="flex items-center gap-4">
+                {socials.map((item) =>
+              <a key={item.label} href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.label} className="text-foreground/60 hover:text-primary transition-colors">
                     <item.icon className="w-5 h-5" />
                   </a>
-                ))}
+              )}
               </div>
-            )}
+            }
           </div>
         </div>
         <div className="mt-14 pt-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -118,8 +118,8 @@ function Footer() {
           <Link to="/admin" className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground/60 hover:text-primary transition-colors">Admin</Link>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 }
 
 /* ---------------- PublicLayout ---------------- */
@@ -129,8 +129,8 @@ export function PublicLayout() {
       <Navbar />
       <main className="flex-1"><Outlet /></main>
       <Footer />
-    </div>
-  );
+    </div>);
+
 }
 
 /* ---------------- Hero ---------------- */
@@ -140,9 +140,9 @@ export function Hero() {
       <div className="absolute inset-0">
         <Image src={siteConfig.images.piano} alt="Wade Preston at the piano" fittingType="fill" focalPointX={0.5} focalPointY={0.5} className="w-full h-full" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/75 to-background/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30 opacity-100" />
       </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pt-28 pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pt-28 pb-20 opacity-100">
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-primary mb-6">
           {siteConfig.tagline}
         </motion.p>
@@ -156,8 +156,8 @@ export function Hero() {
           </Link>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* ---------------- AboutSection ---------------- */
@@ -174,14 +174,14 @@ export function AboutSection() {
           <p className="text-[11px] uppercase tracking-[0.2em] text-primary mb-5">About</p>
           <h2 className="font-display font-light text-4xl md:text-5xl lg:text-6xl leading-tight mb-8 text-balance">A virtuoso at the keys. A storyteller on stage.</h2>
           <div className="space-y-5">
-            {siteConfig.bio.map((p, i) => (
-              <p key={i} className="text-foreground/75 leading-[1.7] text-[15px]">{p}</p>
-            ))}
+            {siteConfig.bio.map((p, i) =>
+            <p key={i} className="text-foreground/75 leading-[1.7] text-[15px]">{p}</p>
+            )}
           </div>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* ---------------- EventCard ---------------- */
@@ -202,8 +202,8 @@ function EventCard({ event, onClick }) {
           {timeRange && <p className="flex items-center gap-2"><Clock className="w-3.5 h-3.5 shrink-0" />{timeRange}</p>}
         </div>
       </div>
-    </button>
-  );
+    </button>);
+
 }
 
 /* ---------------- EventDetailsModal ---------------- */
@@ -212,7 +212,7 @@ function EventDetailsModal({ event, onClose }) {
     const onKey = (e) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+    return () => {document.removeEventListener("keydown", onKey);document.body.style.overflow = "";};
   }, [onClose]);
 
   const location = formatLocation(event.city, event.state);
@@ -232,44 +232,44 @@ function EventDetailsModal({ event, onClose }) {
           </div>
           <h2 className="font-display font-light text-3xl md:text-4xl leading-tight mb-6 pr-8">{event.title}</h2>
           <div className="space-y-4 border-t border-border/60 pt-6">
-            {timeRange && (
-              <div className="flex items-start gap-3">
+            {timeRange &&
+            <div className="flex items-start gap-3">
                 <Clock className="w-4 h-4 text-primary mt-1 shrink-0" />
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Time</p>
                   <p className="text-foreground/90">{timeRange}</p>
                 </div>
               </div>
-            )}
-            {event.venue && (
-              <div className="flex items-start gap-3">
+            }
+            {event.venue &&
+            <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-primary mt-1 shrink-0" />
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Venue</p>
                   <p className="text-foreground/90">{event.venue}</p>
                 </div>
               </div>
-            )}
-            {(location || event.address) && (
-              <div className="flex items-start gap-3">
+            }
+            {(location || event.address) &&
+            <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-primary mt-1 shrink-0" />
                 <div>
                   <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-1">Location</p>
                   <p className="text-foreground/90">{[event.address, location].filter(Boolean).join(" — ")}</p>
                 </div>
               </div>
-            )}
-            {event.description && (
-              <div className="pt-2">
+            }
+            {event.description &&
+            <div className="pt-2">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-2">About</p>
                 <p className="text-foreground/80 leading-[1.7] whitespace-pre-line">{event.description}</p>
               </div>
-            )}
+            }
           </div>
         </div>
       </motion.div>
-    </div>
-  );
+    </div>);
+
 }
 
 /* ---------------- UpcomingEvents ---------------- */
@@ -292,7 +292,7 @@ export function UpcomingEvents() {
         if (mounted) setLoading(false);
       }
     })();
-    return () => { mounted = false; };
+    return () => {mounted = false;};
   }, []);
 
   return (
@@ -308,25 +308,25 @@ export function UpcomingEvents() {
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
-        {loading ? (
-          <div className="flex items-center justify-center py-20"><Loader2 className="w-6 h-6 animate-spin text-primary" /></div>
-        ) : failed ? (
-          <p className="text-center py-16 text-muted-foreground">Something went wrong while loading the calendar. Please try again later.</p>
-        ) : events.length === 0 ? (
-          <div className="text-center py-16">
+        {loading ?
+        <div className="flex items-center justify-center py-20"><Loader2 className="w-6 h-6 animate-spin text-primary" /></div> :
+        failed ?
+        <p className="text-center py-16 text-muted-foreground">Something went wrong while loading the calendar. Please try again later.</p> :
+        events.length === 0 ?
+        <div className="text-center py-16">
             <CalendarDays className="w-10 h-10 text-primary/40 mx-auto mb-4" />
             <p className="text-foreground/70 text-lg font-display">No upcoming performances are currently scheduled.</p>
             <p className="text-muted-foreground text-sm mt-2">Please check back soon.</p>
-          </div>
-        ) : (
-          <div className="grid gap-6 md:grid-cols-3">
+          </div> :
+
+        <div className="grid gap-6 md:grid-cols-3">
             {events.map((e) => <EventCard key={e.id} event={e} onClick={() => setSelected(e)} />)}
           </div>
-        )}
+        }
       </div>
       {selected && <EventDetailsModal event={selected} onClose={() => setSelected(null)} />}
-    </section>
-  );
+    </section>);
+
 }
 
 /* ---------------- CalendarView ---------------- */
@@ -336,7 +336,7 @@ export function CalendarView() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
-  const [cursor, setCursor] = useState(() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), 1); });
+  const [cursor, setCursor] = useState(() => {const n = new Date();return new Date(n.getFullYear(), n.getMonth(), 1);});
   const [selected, setSelected] = useState(null);
   const [isMobile, setIsMobile] = useState(typeof window !== "undefined" ? window.innerWidth < 768 : false);
 
@@ -358,7 +358,7 @@ export function CalendarView() {
         if (mounted) setLoading(false);
       }
     })();
-    return () => { mounted = false; };
+    return () => {mounted = false;};
   }, []);
 
   const year = cursor.getFullYear();
@@ -368,19 +368,19 @@ export function CalendarView() {
 
   const eventsByDate = useMemo(() => {
     const map = {};
-    events.forEach((e) => { if (e.event_date) (map[e.event_date] ||= []).push(e); });
+    events.forEach((e) => {if (e.event_date) (map[e.event_date] ||= []).push(e);});
     return map;
   }, [events]);
 
   const monthEvents = useMemo(() => {
     const prefix = `${year}-${String(month + 1).padStart(2, "0")}-`;
-    return events
-      .filter((e) => (e.event_date || "").startsWith(prefix))
-      .sort((a, b) => {
-        const d = (a.event_date || "").localeCompare(b.event_date || "");
-        if (d !== 0) return d;
-        return (a.start_time || "").localeCompare(b.start_time || "");
-      });
+    return events.
+    filter((e) => (e.event_date || "").startsWith(prefix)).
+    sort((a, b) => {
+      const d = (a.event_date || "").localeCompare(b.event_date || "");
+      if (d !== 0) return d;
+      return (a.start_time || "").localeCompare(b.start_time || "");
+    });
   }, [events, year, month]);
 
   const todayKey = (() => {
@@ -406,20 +406,20 @@ export function CalendarView() {
         <button onClick={() => setCursor(new Date(year, month + 1, 1))} aria-label="Next month" className="p-3 text-foreground/70 hover:text-primary transition-colors"><ChevronRight className="w-5 h-5" /></button>
       </div>
 
-      {isMobile ? (
-        monthEvents.length === 0 ? (
-          <div className="text-center py-16 border border-border/40 rounded-sm">
+      {isMobile ?
+      monthEvents.length === 0 ?
+      <div className="text-center py-16 border border-border/40 rounded-sm">
             <CalendarDays className="w-10 h-10 text-primary/40 mx-auto mb-4" />
             <p className="text-foreground/70 font-display text-lg">No performances scheduled this month.</p>
-          </div>
-        ) : (
-          <div className="space-y-3">
+          </div> :
+
+      <div className="space-y-3">
             {monthEvents.map((e) => {
-              const location = formatLocation(e.city, e.state);
-              const timeRange = formatTimeRange(e.start_time, e.end_time);
-              const [, , dd] = e.event_date.split("-");
-              return (
-                <button key={e.id} onClick={() => setSelected(e)} className="w-full text-left flex gap-5 p-5 bg-card border border-border/60 rounded-sm hover:border-primary/50 transition-colors">
+          const location = formatLocation(e.city, e.state);
+          const timeRange = formatTimeRange(e.start_time, e.end_time);
+          const [,, dd] = e.event_date.split("-");
+          return (
+            <button key={e.id} onClick={() => setSelected(e)} className="w-full text-left flex gap-5 p-5 bg-card border border-border/60 rounded-sm hover:border-primary/50 transition-colors">
                   <div className="shrink-0 w-16 text-center border-r border-border/60 pr-4">
                     <p className="font-display text-3xl text-primary leading-none">{Number(dd)}</p>
                     <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mt-1">{formatShortDate(e.event_date).split(" ")[0]}</p>
@@ -432,40 +432,40 @@ export function CalendarView() {
                       {timeRange && <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{timeRange}</span>}
                     </div>
                   </div>
-                </button>
-              );
-            })}
-          </div>
-        )
-      ) : (
-        <div className="grid grid-cols-7 gap-px bg-border/40 border border-border/40 rounded-sm overflow-hidden">
-          {WEEKDAYS.map((d) => (
-            <div key={d} className="bg-secondary/40 text-center py-3 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{d}</div>
-          ))}
-          {cells.map((cell, i) => (
-            <div key={i} className={`min-h-[110px] bg-card p-2 ${cell ? "" : "bg-secondary/20"}`}>
-              {cell && (
-                <>
+                </button>);
+
+        })}
+          </div> :
+
+
+      <div className="grid grid-cols-7 gap-px bg-border/40 border border-border/40 rounded-sm overflow-hidden">
+          {WEEKDAYS.map((d) =>
+        <div key={d} className="bg-secondary/40 text-center py-3 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{d}</div>
+        )}
+          {cells.map((cell, i) =>
+        <div key={i} className={`min-h-[110px] bg-card p-2 ${cell ? "" : "bg-secondary/20"}`}>
+              {cell &&
+          <>
                   <div className={`text-xs mb-1 ${cell.key === todayKey ? "inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground font-medium" : "text-muted-foreground"}`}>
                     {cell.day}
                   </div>
                   <div className="space-y-1">
-                    {cell.evts.slice(0, 2).map((e) => (
-                      <button key={e.id} onClick={() => setSelected(e)} className="block w-full text-left px-2 py-1 rounded-sm bg-primary/10 border-l-2 border-primary hover:bg-primary/20 transition-colors">
+                    {cell.evts.slice(0, 2).map((e) =>
+              <button key={e.id} onClick={() => setSelected(e)} className="block w-full text-left px-2 py-1 rounded-sm bg-primary/10 border-l-2 border-primary hover:bg-primary/20 transition-colors">
                         <p className="text-[11px] text-foreground/90 truncate leading-tight">{e.title}</p>
                         {e.start_time && <p className="text-[10px] text-muted-foreground">{formatTimeRange(e.start_time, e.end_time)}</p>}
                       </button>
-                    ))}
+              )}
                     {cell.evts.length > 2 && <p className="text-[10px] text-primary px-2">+{cell.evts.length - 2} more</p>}
                   </div>
                 </>
-              )}
+          }
             </div>
-          ))}
+        )}
         </div>
-      )}
+      }
 
       {selected && <EventDetailsModal event={selected} onClose={() => setSelected(null)} />}
-    </>
-  );
+    </>);
+
 }
